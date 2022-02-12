@@ -37,4 +37,19 @@ allParagraphs.forEach(p => {
 });
 
 
+//.grab element by id
+const title =document.getElementById('title')
+console.log(title);
+
+//get element by class name
+//this returns a html collection so you cannot for all on it or other common methdos that objects can have
+const elementBasedOnClassName = document.getElementsByClassName('paraTexts');
+console.log(elementBasedOnClassName);
+
+
+//get element by tag name
+const documentByTagName =document.getElementsByTagName('p');
+//grabbing all the ps again
+console.log(documentByTagName);
+
 main();
