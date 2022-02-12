@@ -31,10 +31,10 @@ secondText.innerText = 'some more Text';
 
 
 //grab all of an element
-const allParagraphs = document.querySelectorAll('p');
-allParagraphs.forEach(p => {
-    p.innerText = 'text';
-});
+//const allParagraphs = document.querySelectorAll('p');
+//allParagraphs.forEach(p => {
+//    p.innerText = 'text';
+//});
 
 
 //.grab element by id
@@ -76,6 +76,54 @@ getFromTheDom.innerHTML = htmlSnippets;
 lads.forEach(lad =>
     {
         getFromTheDom .innerHTML+=  ` <h2> name:${lad} !` ; 
-    })
+});
 
-main();
+
+//Updating attributes
+
+const link = document.getElementById('fix');
+console.log(link);
+link.getAttribute('href')
+link.setAttribute('href','https://www.bing.com')
+const link2 = document.getElementById('fix2');
+
+//could use this kind of thing for debugging or soemthing
+link2.innerText = link2.getAttribute('class');
+console.log(link2.getAttribute);
+
+
+//changing css styles say setting colour
+let stylishHeading = document.getElementById('stylish')
+console.log(stylishHeading); 
+stylishHeading.style.color = 'crimson';
+stylishHeading.style.fontSize = '42';
+stylishHeading.style.accentColor = 'orange';
+stylishHeading.style.backgroundColor = 'black';
+
+//adding and removing classes
+stylishHeading.classList.add('NotSoCool');
+stylishHeading.classList.remove('veryCoolClass');
+
+//getting all the things and changing class based on innertext
+
+let allThePs = document.querySelectorAll('p');
+console.log(allThePs);
+//convert html collection to array
+//allThePs = Array.prototype.slice.call(allThePs);
+allThePs.forEach( p =>
+    {
+        let paragraphText = p.textContent;
+        if(paragraphText.includes('Cool')){
+            p.classList.add('Cool');
+        } else if (paragraphText.includes('Not')){
+            p.classList.add('error');
+        }
+ });  
+
+ //this took so long to get working because i was chaning the innertext on all ps further up moral of the story maybe doing a bunch of unrelatiod calls in one document is a bad idea
+
+ //allows you to toggle a test on or off
+ const titler = document.querySelector('.titular');
+ titler.classList.toggle('test');
+
+ main();
