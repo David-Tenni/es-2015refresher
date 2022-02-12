@@ -52,4 +52,30 @@ const documentByTagName =document.getElementsByTagName('p');
 //grabbing all the ps again
 console.log(documentByTagName);
 
+
+const getFromTheDom = document.getElementById('manMe');
+console.log(getFromTheDom)
+getFromTheDom.innerText = 'hanging this stuff';
+getFromTheDom.innerHTML = '<h3> grow big and stronk </h3>';
+
+
+const lads = ['Nero','Julius','Cato', 'Augstus']
+
+let htmlSnippets ='';
+
+//bad way
+//lads.forEach(lad =>
+    //{
+    //    htmlSnippets +=  '<h2> name: '  + lad + "!"; 
+  //  })
+//getFromTheDom.innerHTML = htmlSnippets;
+
+//better way
+getFromTheDom.innerHTML = htmlSnippets;
+
+lads.forEach(lad =>
+    {
+        getFromTheDom .innerHTML+=  ` <h2> name:${lad} !` ; 
+    })
+
 main();
