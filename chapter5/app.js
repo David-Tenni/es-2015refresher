@@ -81,6 +81,45 @@ console.log(Math.round(Math.random));
 console.log('random between 0-100');
 console.log(Math.round(Math.random()*100));
 
+//symbols
+/*
+numbers strings bools null undefined symols
+primative types
+reference types
+obj iterals 
+arrays
+functiions
+dates
+all other objects
+*/
 
+//the difference is how they are used in memory
+//one is stored on the stack which ahs limited space but is faster
+//there is also the heap which has more space but is slower
+
+
+//TLDR primatives on stack which fast but smol references stored on the heap which is slower but has more stroagte wait this was longer
+
+//so things tend to add the valuers of the object on the heap but the pointer to it is stored on the array
+
+
+let scoreOne = 50;
+let scoreTwo = scoreOne; 
+
+console.log(scoreOne);
+console.log(scoreTwo);
+scoreOne = 100;
+console.log(scoreOne);
+console.log(scoreTwo);
+
+const  userOne = {name: 'Thomas Lasky', rank: 'Captain'};
+const  userTwo = userOne; 
+
+console.log(userOne, userTwo);
+
+userOne.rank = 'Admiral';
+
+//because both point to the same place on the heap they both will display the same value even though only one was updated
+console.log(userOne, userTwo);
 
 main();
