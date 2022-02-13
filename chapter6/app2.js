@@ -31,11 +31,37 @@ listsItems.forEach(item => {
 
 
 ul.addEventListener('click', e =>{
-    console.log('event in ul');
+console.log('event in ul');
 console.log(e.target);
 //dom show tags as capitals
 if(e.target.tagName == 'LI'){
-    e.target.remove();
-}
+   e.target.remove();
+} 
+
+});
+
+console.log('working');
+//more common DOM events
+const title = document.getElementById('title');
+console.log(title);
+//does something when text copeid
+title.addEventListener('copy', () => {
+    console.log('hello there');
+});
+// mouse move geting mouse x and y
+const box = document.querySelector('.box');
+box.addEventListener('mousemove', e => {
+console.log(`mouse at ${e.offsetX}X and, mouse at ${e.offsetY}Y`);
+box.textContent = `mouse at ${e.offsetX}X and, mouse at ${e.offsetY}Y`;
+
+})
+
+//adding directly a listener directly to the document object. 
+//addoing a listener for when scrolling
+
+//page x and y is relative tow hole document
+document.addEventListener('wheel', e => {
+console.log(e.pageY, e.pageX);
+
 
 });
