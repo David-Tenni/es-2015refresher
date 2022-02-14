@@ -9,3 +9,19 @@ form.addEventListener('submit', (e) => {
     console.log(form.username.value)
     
 })
+
+const username ='theveryone'
+//regex patterns need thge /s they cant be in a regular string or else you can't call regex methods like test
+const pattern = /[a-z]{9,}/;
+
+let result = pattern.test(username);
+console.log(result);
+
+//advtanges of this way is its easier to search through large amount of text
+let largeSearch =username.search(pattern);
+//returns a int that's position of the match
+console.log(largeSearch);
+
+const validation =  () => {
+
+};
