@@ -41,10 +41,10 @@ form.addEventListener('keyup', e => {
     const username = form.username.value;
     if(usernamePattern.test(username)){
     formFeedback.textContent = 'Valid';
-    usernameField.classList.add('pass');
+    usernameField.setAttribute('class','pass');
     }   else{
     formFeedback.textContent = 'Invalid Submission';
-    usernameField.classList.add('fail');
+    usernameField.setAttribute('class','fail');
     } 
 
 });
