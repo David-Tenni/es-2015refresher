@@ -1,5 +1,6 @@
 const form = document.querySelector('.signup-form');
 const formFeedback = document.getElementById('validationFeedback');
+const usernameField = document.getElementById('username');
 // const username = document.querySelector('#username');
 
 //submit refreshes page
@@ -33,6 +34,22 @@ form.addEventListener('submit', (e) => {
 
 // validating form
 
+
+//live feedback rather than waiting to submit
+form.addEventListener('keyup', e => {
+
+    const username = form.username.value;
+    if(usernamePattern.test(username)){
+    formFeedback.textContent = 'Valid';
+    usernameField.classList.add('pass');
+    }   else{
+    formFeedback.textContent = 'Invalid Submission';
+    usernameField.classList.add('fail');
+    } 
+
+});
+
+//keyboard events
 
 
 const validation =  () => {
