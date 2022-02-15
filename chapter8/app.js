@@ -1,26 +1,32 @@
-//this is a bad qway to do this kind of thing because you can view the awnsers in the console but this is just practice so whatever
+const correctAnswers = ['A', 'B', 'A', 'A', 'D'];
+const form = document.querySelector('.quiz-form');
+const result = document.getElementById('result');
 
-const correctAnswers =['B','C','D','B','A'];
+form.addEventListener('submit', e => {
+  e.preventDefault();
 
+  let score = 0;
+  const userAnswers = [form.q1.value, form.q2.value, form.q3.value, form.q4.value];
 
+  // check the answers
+  userAnswers.forEach((answer, index) => {
+    if (answer === correctAnswers[index]){
+      score += 25;
+    }
+  });
 
-const form = document.getElementById('quizform');
-let scorebox = document.querySelector('.scorebox');
+  // show the result
+  scrollTo(0, 0);
+  result.classList.remove('d-none');
 
-let score =0;
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  let output = 0;
+  const timer = setInterval(() => {
+    result.querySelector('span').textContent = `${output}%`;
+    if(output === score){
+      clearInterval(timer);
+    } else {
+      output++;
+    }
+  }, 10);
 
- 
-    const userAnswers =[form.q1.value,form.q2.value,form.q3.value,form.q14value,form.q5.value,];
-
-    //CHheck awnsers
-    userAnswers.forEach((answer, index) =>{
-       if(answer === correctAnswers[index]){
-        score+=20;
-       }
-    });
-    scrollTo(0,0);
-    scorebox.textContent = `${score}%`;
-    
 });
