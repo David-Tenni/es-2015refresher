@@ -4,18 +4,20 @@ const correctAnswers =['B','C','D','B','A'];
 
 
 const form = document.getElementById('quizform');
+let scorebox = document.querySelector('.scorebox');
 
+let score =0;
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let score =0;
+ 
     const userAnswers =[form.q1.value,form.q2.value,form.q3.value,form.q14value,form.q5.value,];
 
     //CHheck awnsers
     userAnswers.forEach((answer, index) =>{
        if(answer === correctAnswers[index]){
-        score+=25;
+        score+=20;
        }
     });
-    console.log(score);
-})
+    scorebox.textContent = `${score}%`;
+});
