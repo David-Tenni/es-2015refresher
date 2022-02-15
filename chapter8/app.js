@@ -3,6 +3,7 @@
 const correctAnswers =['B','C','D','B','A'];
 
 
+
 const form = document.getElementById('quizform');
 let scorebox = document.querySelector('.scorebox');
 
@@ -19,5 +20,7 @@ form.addEventListener('submit', (e) => {
         score+=20;
        }
     });
+    scrollTo(0,0);
     scorebox.textContent = `${score}%`;
+    
 });
