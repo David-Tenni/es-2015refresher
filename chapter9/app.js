@@ -161,9 +161,42 @@ function sortMethodTest(){
 
 }
 
+function chainingArrayMethod(){
+
+    const banished = [
+        {name: 'craig', value: 100},
+        {name: 'eschurum', value: 90},
+        {name: 'atriox', value: 200},
+        {name: 'Pavium', value: 40},
+    ];
+    /*
+    const filteredBanished = banished.filter(banish => banish.value > 80)
+    console.log(filteredBanished)
+
+    const honoured = filteredBanished.map(banish => {
+        return `the loyal banished who have participated in ${banish.value} operations is: ${banish.name}`
+    });
+    console.log(honoured);
+
+    */
+
+    //method chaining 
+    const banishedHonoured = banished
+    .filter(banish => banish.value > 80)
+    .map(banish => `the loyal banished who have participated in ${banish.value} operations is: ${banish.name}`);
+
+    console.log(banishedHonoured);
+
+
+};
+    
+
+
+
 filterTest();
 mapMethodTest();
 reduceMethodTest();
 reduceMethodTest2();
 findMethodTest();
 sortMethodTest();
+chainingArrayMethod();
