@@ -1,7 +1,6 @@
-const addForm = document.getElementById('adderForm');
-const taskList = document.getElementById('taskList');
-
-console.log(addForm);
+const addForm = document.getElementById('add-form');
+const searchBar = document.getElementById('search-bar');
+const taskList = document.getElementById('task-list');
 
 //add the task
 const AddTask = todo => {
@@ -34,5 +33,28 @@ taskList.addEventListener('click', e => {
     if(e.target.classList.contains('delete')){
         e.target.parentElement.remove();
     }
+});
+
+const FilterTasks = term => {
+
+Array.from(taskList.children)
+.filter((task) => !task.textContent.toLowerCase().includes(term))
+.forEach((invalid) => invalid.classList.add('hidden') && invalid.classList.remove('d-flex')
+);
+
+
+
+Array.from(taskList.children)
+.filter((task) => task.textContent.toLowerCase().includes(term))
+.forEach((valid) => 
+valid.classList.remove('hidden') && valid.classList.add("d-flex"));
+
+};
+
+
+searchBar.addEventListener('keyup', e =>{
+    e.preventDefault();
+    const searchTerm = searchBar.value.toLowerCase();
+    FilterTasks(searchTerm);
 });
 
