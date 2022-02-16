@@ -40,7 +40,7 @@ function mapMethodTest(){
     {name: 'Pavium', value: 40},
     ];
 
-    const banishedUpdate= banished.map((banish) =>
+    const banishedUpdate= banished.map(banish =>
     {
         if(banish.value > 50)
         {
