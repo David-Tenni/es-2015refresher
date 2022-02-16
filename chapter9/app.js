@@ -113,9 +113,57 @@ function findMethodTest()
 
 };
 
+/*destructive method*/
+function sortMethodTest(){
+    const names = ['cutter', 'forge', 'atriox', 'keys', 'pavium', 'vordus'];
+    const prices = [1,3,23,6,15,13,17,14];
+    
+    const banished = [
+    {name: 'craig', value: 100},
+    {name: 'eschurum', value: 90},
+    {name: 'atriox', value: 200},
+    {name: 'Pavium', value: 40},
+    ];
+    
+    names.sort();
+    console.log(names);
+    
+    //by default sorting numbers only sorts based on the first number
+    prices.sort();
+    console.log(prices);
+    
+    //reverse the order so if it was in alphabetical now its in dealphabetical but it will not autoomaticaly be alphabeticed if its random first it'll now justbe differently ordered random
+    names.reverse();    
+    console.log(names);
+    
+    console.log(banished);
+    //sorting object requires a function as a arugment
+    /*banished.sort((a,b) => {
+        if (a.value > b.value){
+            return -1;
+        }
+        else if (b.value > a.value){
+            return 1;
+        } else{
+            return 0;
+        }
+
+
+    });
+    */
+    
+    //much more condensed 
+    //still works the same because the output will either be a negative number a positive or 0
+    banished.sort((a,b) => b.value - a.value);
+    console.log(banished);
+
+
+
+}
 
 filterTest();
 mapMethodTest();
 reduceMethodTest();
 reduceMethodTest2();
 findMethodTest();
+sortMethodTest();
