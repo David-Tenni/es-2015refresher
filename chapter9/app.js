@@ -97,8 +97,25 @@ function reduceMethodTest2()
 
 };
 
+//find mEthod
+function findMethodTest()
+{    
+    const prices = [1,3,23,6,15,13,17,14];
+    //const results = prices.find((price) => {
+    //    
+    //    
+    //    return price > 5;
+   // });
+
+    //more concise
+    const results = prices.find(price => price > 5);
+    console.log(results);
+
+};
+
 
 filterTest();
 mapMethodTest();
 reduceMethodTest();
 reduceMethodTest2();
+findMethodTest();
