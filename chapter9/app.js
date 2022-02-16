@@ -51,9 +51,54 @@ function mapMethodTest(){
     });
     console.log(banishedUpdate);
 
-}
+};
+
+
+
+//good for counting stuff
+function reduceMethodTest()
+{    
+    const prices = [1,3,23,6,15,13,17,14];
+    const results = prices.reduce((accumulator, current) => {
+        if(current > 14){
+            accumulator++;
+        }
+        return accumulator;
+    }, //pass in the inital value of the accumlator asa second method
+    0);
+    console.log(results);
+
+};
+
+function reduceMethodTest2()
+{    
+    const banished = [
+        {name: 'craig', wins: 100},
+        {name: 'craig', wins: 100},
+        {name: 'craig', wins: 100},
+        {name: 'eschurum', wins: 90},
+        {name: 'eschurum', wins: 90},
+        {name: 'atriox', wins: 200},
+        {name: 'atriox', wins: 220},
+        {name: 'atriox', wins: 200},
+        {name: 'Pavium', wins: 40},
+        {name: 'Pavium', wins: 40},
+        {name: 'Pavium', wins: 40},
+        ];
+
+    const atrioxResults = banished.reduce((accumulator, current) => {
+        if(current.name === 'atriox'){
+            accumulator += current.wins;
+        }
+        return accumulator;
+    }, //pass in the inital value of the accumlator asa second method
+    0);
+    console.log(atrioxResults);
+
+};
 
 
 filterTest();
 mapMethodTest();
-
+reduceMethodTest();
+reduceMethodTest2();
