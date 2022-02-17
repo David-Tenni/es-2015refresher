@@ -15,9 +15,26 @@ const ConvertMilisecondsToDays = miliseconds => {
     let days = (miliseconds/1000/60/60/24);
     return days;
 }
-
+const ConvertMillisecondsToHours = miliseconds => {
+    let hours = (miliseconds/1000/60/60);
+    return hours;
+}
+const ConvertHoursToMinutes = miliseconds => {
+    let minutes = (miliseconds/1000/60);
+    return minutes;
+}
 //time stamp comparisons
-const timeSince = now.getTime() - theBeforeTime.getTime();
-covidBox.textContent=`Covid has been going for ${ConvertMilisecondsToDays(timeSince)} days ago `
 
+
+
+
+const tick = () =>{
+    let currentTime  = new Date();
+    const timeSince = currentTime - theBeforeTime.getTime();
+    covidBox.textContent=`Covid has been going for ${ConvertMilisecondsToDays(timeSince)} days ago, ${ConvertMillisecondsToHours(timeSince)}, hours ago ${ConvertHoursToMinutes(timeSince)} minutes ago, and no those are not combined they should be but eh  `
+    console.log('ss')
+}
+
+
+setInterval(tick, 1000);
 
