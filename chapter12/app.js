@@ -2,7 +2,7 @@
 function countSeconds(waitTime){
     let second = waitTime;
     setTimeout ((waitTime) => {
-        console.log(`${second} seconds` );
+        console.log(`${second} seconds since start counting` );
     }, waitTime*1000); 
     
 };
