@@ -37,7 +37,8 @@ request.addEventListener('readystatechange', () => {
             callback("endpoint not found (404)", undefined);
         };
     });
-    request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+    //request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+    request.open('GET', 'todo.json');
     request.send();
 };
 
