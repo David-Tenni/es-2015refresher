@@ -48,7 +48,7 @@ const requestFunction = (resource, callback) => {
   
 requestFunction('todo/bob.json').then( data =>{
 console.log('promise resolved', data);
-}).then((error) => {
+}).catch((error) => {
 console.log(error);
 });
 
