@@ -22,33 +22,39 @@ countToFive();
 
 
 
-const requestsFunction = (resource, callback) =>{
-//request object
-const request = new XMLHttpRequest();
-//add a listener for the request 
-request.addEventListener('readystatechange', () => {
-    //if a request is in readystae 4 the 'done' log it's value also checking the response status is 200 which means everything is okn with the request 
-        if(request.readyState == 4 && request.status =="200"){
-            const requestResponse = JSON.parse(request.responseText);
-            callback(undefined, requestResponse);
-           
-        } else if (request.status =='404'){
-            
-            callback("endpoint not found (404)", undefined);
-        };
+
+
+const requestFunction = (resource, callback) => {
+
+    const request = new XMLHttpRequest();
+  
+    request.addEventListener('readystatechange', () => {
+        //ensuring that there is a ready state of 4 and status of 200 which means everything is good
+      if(request.readyState === 4 && request.status === 200){
+        const data = JSON.parse(request.responseText);
+        callback(undefined, data);
+      } else if (request.readyState === 4){
+        callback('could not fetch the data', undefined);
+      }
+  
     });
-    //request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
+    
     request.open('GET', resource);
     request.send();
+  
 };
-
-requestsFunction((error, data) => {
-if (data){
-requestResponse = data;
-console.log(requestResponse);
-}else{
-    console.log(error);
-};
+  
+  
+requestFunction('todo/bob.json', (err, data) => {
+    console.log(data);
+    requestFunction('todo/jason.json', (err, data) => {
+      console.log(data);
+      requestFunction('todo/sam.json', (err, data) => {
+        console.log(data);
+      });
+    });
 });
 
+
+//promises
 
