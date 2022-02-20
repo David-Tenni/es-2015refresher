@@ -22,7 +22,7 @@ countToFive();
 
 
 
-const requestsFunction = callback =>{
+const requestsFunction = (resource, callback) =>{
 //request object
 const request = new XMLHttpRequest();
 //add a listener for the request 
@@ -38,7 +38,7 @@ request.addEventListener('readystatechange', () => {
         };
     });
     //request.open('GET', 'https://jsonplaceholder.typicode.com/todos');
-    request.open('GET', 'todo.json');
+    request.open('GET', resource);
     request.send();
 };
 
