@@ -18,20 +18,21 @@ const countToFive = () => {
 }
 countToFive();
 
-let requestResponse = '';
 
-const requestsFunction = (callback) =>{
-    //request object
-    const request = new XMLHttpRequest();
-    //add a listener for the request 
-    request.addEventListener('readystatechange', () => {
-        //if a request is in readystae 4 the 'done' log it's value also checking the response status is 200 which means everything is okn with the request 
+
+
+
+const requestsFunction = callback =>{
+//request object
+const request = new XMLHttpRequest();
+//add a listener for the request 
+request.addEventListener('readystatechange', () => {
+    //if a request is in readystae 4 the 'done' log it's value also checking the response status is 200 which means everything is okn with the request 
         if(request.readyState == 4 && request.status =="200"){
-            requestResponse = request.responseText;
-            callback(undefined, request.responseText);
+            const requestResponse = JSON.parse(request.responseText);
+            callback(undefined, requestResponse);
            
-        } else if
-        (request.status =='404'){
+        } else if (request.status =='404'){
             
             callback("endpoint not found (404)", undefined);
         };
