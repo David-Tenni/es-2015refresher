@@ -72,12 +72,12 @@ const promiseGetSomething = () => {
     //});
     
     //refactoring of the above
-    promiseGetSomething()
-    .then(data => {console.log(data)})
-    .catch(error => {
-        console.log(error);
-    });
-    
+promiseGetSomething()
+.then(data => {console.log(data)})
+.catch(error => {
+    console.log(error);
+});
+
     //using the fetch api instead of httprequest this is how you should actually be doing so in modern times
     
     
@@ -94,19 +94,22 @@ const promiseGetSomething = () => {
     
     */
 
-    const getItems = async () => {
+const getItems = async () => {
 
-        const response = await fetch('todo/jason.json');
-        const data = await response.json();
-        console.log(data);
-        
-        return data;
-    };
+    const response = await fetch('todo/jason.json');
+    if(response.status != 200){
+        throw new Error('json file not found')
+    }
+    const data = await response.json();
+    console.log(data);
+    
+    return data;
+};
 
 
-getItems().then(data => {console.log('resolved', data)});
-
-
+getItems()
+    .then(data => console.log('resolved', data))
+    .catch(err => console.log('rejected', err.message));
 
     //basic steps 
     //1. fetch data
