@@ -46,18 +46,18 @@ const requestFunction = (resource, callback) => {
 };
 
 
-requestFunction('todo/bob.json').then( data =>{
-    console.log('promise 1 resolved ', data);
-return requestFunction('todo/jason.json');
-}).then(data => {
-    console.log('promise 2 resolved', data)
-    return requestFunction('todo/sam.json');
-}).then(data => {
-    console.log('promise 3 resolved', data)
-}).catch((error) => {
-    console.log(error);
-});
-
+//requestFunction('todo/bob.json').then( data =>{
+//    console.log('promise 1 resolved ', data);
+//return requestFunction('todo/jason.json');
+//}).then(data => {
+//    console.log('promise 2 resolved', data)
+//    return requestFunction('todo/sam.json');
+//}).then(data => {
+//    console.log('promise 3 resolved', data)
+//}).catch((error) => {
+//    console.log(error);
+//});
+//
 
 //promises inside a promise you either resolve it when you scuesfful get the data or reject it when you get some kind of error
 
@@ -81,7 +81,7 @@ const promiseGetSomething = () => {
     //using the fetch api instead of httprequest this is how you should actually be doing so in modern times
     
     
-    
+    /* 
     
     fetch('todo/jason.json').then((response) => {
         console.log('resolved', response);
@@ -91,6 +91,21 @@ const promiseGetSomething = () => {
     }).catch(() => {
         console.log('failed', err);
     });
+    
+    */
+
+    const getItems = async () => {
+
+        const response = await fetch('todo/jason.json');
+        const data = await response.json();
+        console.log(data);
+        
+        return data;
+    };
+
+
+getItems().then(data => {console.log('resolved', data)});
+
 
 
     //basic steps 
@@ -98,4 +113,3 @@ const promiseGetSomething = () => {
     //2. take response and return response.json()
     //3. then use .then and .catch to return data and catch errors respectively
 
-    
