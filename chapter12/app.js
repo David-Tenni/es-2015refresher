@@ -27,29 +27,35 @@ countToFive();
 const requestFunction = (resource, callback) => {
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
-      
+        
         request.addEventListener('readystatechange', () => {
             //ensuring that there is a ready state of 4 and status of 200 which means everything is good
-          if(request.readyState === 4 && request.status === 200){
-            const data = JSON.parse(request.responseText);
-            resolve(data);
-          } else if (request.readyState === 4){
-            reject('error calling api');
-          }
-      
+            if(request.readyState === 4 && request.status === 200){
+                const data = JSON.parse(request.responseText);
+                resolve(data);
+            } else if (request.readyState === 4){
+                reject('error calling api');
+            }
+            
         });
         
         request.open('GET', resource);
         request.send();
     });
-  
+    
 };
-  
-  
+
+
 requestFunction('todo/bob.json').then( data =>{
-console.log('promise resolved', data);
+    console.log('promise 1 resolved ', data);
+return requestFunction('todo/jason.json');
+}).then(data => {
+    console.log('promise 2 resolved', data)
+    return requestFunction('todo/sam.json');
+}).then(data => {
+    console.log('promise 3 resolved', data)
 }).catch((error) => {
-console.log(error);
+    console.log(error);
 });
 
 
@@ -62,13 +68,34 @@ const promiseGetSomething = () => {
     });
 };
 //promiseGetSomething().then((data) => {
-//    console.log(data)
-//});
+    //    console.log(data)
+    //});
+    
+    //refactoring of the above
+    promiseGetSomething()
+    .then(data => {console.log(data)})
+    .catch(error => {
+        console.log(error);
+    });
+    
+    //using the fetch api instead of httprequest this is how you should actually be doing so in modern times
+    
+    
+    
+    
+    fetch('todo/jason.json').then((response) => {
+        console.log('resolved', response);
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    }).catch(() => {
+        console.log('failed', err);
+    });
 
-//refactoring of the above
-promiseGetSomething()
-.then(data => {console.log(data)})
-.catch(error => {
-    console.log(error);
-});
 
+    //basic steps 
+    //1. fetch data
+    //2. take response and return response.json()
+    //3. then use .then and .catch to return data and catch errors respectively
+
+    
