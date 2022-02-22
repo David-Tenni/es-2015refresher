@@ -22,7 +22,7 @@ const makeQuery = async city => {
 const getCity = async () => {
     
     
-    const response = await fetch(query);
+    const response = await fetch(query, {mode: "cors"});
 };
 
 
