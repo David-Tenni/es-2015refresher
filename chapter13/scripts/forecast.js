@@ -120,5 +120,10 @@ console.log(getCity('melbourne')
 }).catch(error => console.log(error))
 );
 
+const cityDisplay = document.getElementById('current-city')
+const weatherDisplay = document.getElementById('weather-condition')
+const temperatureDisplay = document.getElementById('temperature')
+
+weatherDisplay.innerText = getWeather(26216);
 */
 
