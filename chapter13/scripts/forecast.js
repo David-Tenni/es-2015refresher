@@ -83,3 +83,24 @@ const getCity = async () => {
 //     <script src="scripts/app.js"/>
 // </body>
 // </html>
+
+
+
+
+//ok here is what I am doing in the other file
+/*
+const getCity = async city => {
+    const CitySearchEndpoint = "http://dataservice.accuweather.com/locations/v1/cities/search";
+    let query ='';
+    
+    query = `${CitySearchEndpoint}?apikey=${key}&q=${city}`
+    const response = await fetch(query, {mode: "cors"});
+    const data = await response.json();
+    return data[0];
+};
+console.log(getCity('melbourne')
+.then(data => console.log(data))
+.catch(error => console.log(error))
+);
+*/
+
