@@ -98,9 +98,27 @@ const getCity = async city => {
     const data = await response.json();
     return data[0];
 };
+
+const getWeather = async cityKey =>{
+    const CurrentConditionEndpoint ="http://dataservice.accuweather.com/currentconditions/v1/"
+    let query ='';
+    query = `${CurrentConditionEndpoint}${cityKey}?apikey=${key}`
+    const response = await fetch(query, {mode: "cors"});
+    const data = await response.json();
+    return data[0];
+};
+
+
+
+console.log(getWeather(26216));
+
 console.log(getCity('melbourne')
-.then(data => console.log(data))
-.catch(error => console.log(error))
+.then(data => {
+    return getWeather(data.Key);
+}).then(weatherData => {
+    console.log(weatherData);
+}).catch(error => console.log(error))
 );
+
 */
 
