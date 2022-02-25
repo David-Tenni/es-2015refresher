@@ -8,9 +8,10 @@ const temperatureDisplay = document.getElementById('temperature')
 const updateCity = async userCity => {
     console.log(userCity);
 const cityDetails = await getCity(userCity);
+const weather = await getWeather(cityDetails.Key);
+console.log(weather);
 };
 
-updateCity('s');
 cityForm.addEventListener('submit', e => {
     // prevent default action
     e.preventDefault();
