@@ -10,6 +10,8 @@ const updateCity = async userCity => {
 const cityDetails = await getCity(userCity);
 const weather = await getWeather(cityDetails.Key);
 console.log(weather);
+console.log(cityDetails);
+return {CityDetails: cityDetails, weather: weather};
 };
 
 cityForm.addEventListener('submit', e => {
@@ -18,6 +20,10 @@ cityForm.addEventListener('submit', e => {
 
     const city = cityForm.city.value.trim();
     cityForm.reset();
-    updateCity(city);
+    updateCity(city).then(data =>{
+        cityDisplay.textContent = data.CityDetails.localisedName;
+        weatherDisplay.textContent = data.CityDetails.weather;
+
+    });
   
   });
