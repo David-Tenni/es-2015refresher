@@ -5,17 +5,18 @@ const cityDisplay = document.getElementById('current-city')
 const weatherDisplay = document.getElementById('weather-condition')
 const temperatureDisplay = document.getElementById('temperature')
 
-
 const updateCity = async userCity => {
-console.log(userCity)
+    console.log(userCity);
+const cityDetails = await getCity(userCity);
 };
 
+updateCity('s');
 cityForm.addEventListener('submit', e => {
     // prevent default action
     e.preventDefault();
-    
-    // get city value
+
     const city = cityForm.city.value.trim();
     cityForm.reset();
+    updateCity(city);
   
   });
