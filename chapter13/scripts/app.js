@@ -4,6 +4,9 @@ const cityForm = document.querySelector('form');
 const cityDisplay = document.getElementById('current-city')
 const weatherDisplay = document.getElementById('weather-condition')
 const temperatureDisplay = document.getElementById('temperature')
+const updateUI = data =>{
+
+};
 
 const updateCity = async userCity => {
     console.log(userCity);
