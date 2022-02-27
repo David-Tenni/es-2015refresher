@@ -22,8 +22,11 @@ cityForm.addEventListener('submit', e => {
     cityForm.reset();
     updateCity(city).then(data =>{
         cityDisplay.textContent = data.CityDetails.localisedName;
-        weatherDisplay.textContent = data.CityDetails.weather;
-
+        weatherDisplay.textContent = data.CityDetails.weather[2];
+        let x = data;
+        console.log(x);
     });
   
   });
+
+  ///8:21PM
