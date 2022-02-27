@@ -5,7 +5,8 @@ const cityDisplay = document.getElementById('current-city')
 const weatherDisplay = document.getElementById('weather-condition')
 const temperatureDisplay = document.getElementById('temperature')
 const updateUI = data =>{
-
+    const cityDetails = data.cityDetails;
+    const weather = data.weather;
 };
 
 const updateCity = async userCity => {
