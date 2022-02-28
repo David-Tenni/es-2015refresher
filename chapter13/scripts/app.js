@@ -1,22 +1,33 @@
 // let key = document.getElementById('key').innerText;
 // console.log(key);
 const cityForm = document.querySelector('form');
-const cityDisplay = document.getElementById('current-city')
-const weatherDisplay = document.getElementById('weather-condition')
-const temperatureDisplay = document.getElementById('temperature')
+const detailsCard = document.getElementById('details-card')
+const details = document.getElementById('details')
 const updateUI = data =>{
-    const cityDetails = data.cityDetails;
+    const cityDets = data.cityDets;
     const weather = data.weather;
+    console.log(cityDets);
+
+    details.innerHTML = 
+    `
+    <h5 id='current-city' class="my-3">${cityDets.EnglishName}</h5>
+        <div id='weather-condition' class="my-3">${weather.WeatherText}</div>
+        <div class="display-4 my-4">
+            <span id="temperature" >${weather.Temperature.Metric.Value}</span>
+            <span>&deg;C</span>
+        </div>
+    `;
+    console.log(details);
 };
 
-const updateCity = async userCity => {
-    console.log(userCity);
-const cityDetails = await getCity(userCity);
-const weather = await getWeather(cityDetails.Key);
-console.log(weather);
-console.log(cityDetails);
-return {CityDetails: cityDetails, weather: weather};
+
+const updateCity = async (userCity) => {
+    const cityDets = await getCity(userCity);
+    const weather = await getWeather(cityDets.Key);
+    console.log(cityDets)
+    return { cityDets, weather };
 };
+
 
 cityForm.addEventListener('submit', e => {
     // prevent default action
@@ -25,10 +36,10 @@ cityForm.addEventListener('submit', e => {
     const city = cityForm.city.value.trim();
     cityForm.reset();
     updateCity(city).then(data =>{
-        cityDisplay.textContent = data.CityDetails.localisedName;
-        weatherDisplay.textContent = data.CityDetails.weather[2];
-        let x = data;
-        console.log(x);
+        console.log(data);
+        updateUI(data);
+    }).catch(err => {
+        console.log("an error has occure", err);
     });
   
   });
