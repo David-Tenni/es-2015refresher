@@ -7,7 +7,7 @@ const updateUI = data =>{
     const cityDets = data.cityDets;
     const weather = data.weather;
     console.log(cityDets);
-
+    detailsCard.classList.remove('d-none');
     details.innerHTML = 
     `
     <h5 id='current-city' class="my-3">${cityDets.EnglishName}</h5>
