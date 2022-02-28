@@ -1,8 +1,11 @@
 // let key = document.getElementById('key').innerText;
 // console.log(key);
 const cityForm = document.querySelector('form');
-const detailsCard = document.getElementById('details-card')
-const details = document.getElementById('details')
+const detailsCard = document.getElementById('details-card');
+const details = document.getElementById('details');
+const timeImage = document.getElementById('time-image');
+const weatherIcon =document.getElementById('weather-icon');
+
 const updateUI = data =>{
     const {cityDetails, weather} = data;
     
