@@ -9,6 +9,17 @@ const weatherIcon =document.getElementById('weather-icon');
 const updateUI = data =>{
     const {cityDetails, weather} = data;
     
+    let timeSrc = "";
+    let iconSrc ="";
+    if (weather.IsDayTime){
+        timeSrc = 'pix/Day.svg';
+    } else{timeSrc = 'pix/Night.svg'};
+
+    timeImage.setAttribute('src', timeSrc);
+    
+    const WeatherIconSrc =`pix/icons/${weather.WeatherIcon}.svg`;
+    weatherIcon.setAttribute('src', WeatherIconSrc);
+
     detailsCard.classList.remove('d-none');
     details.innerHTML = 
     `
