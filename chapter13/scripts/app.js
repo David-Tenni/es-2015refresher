@@ -41,8 +41,10 @@ const updateCity = async (userCity) => {
 cityForm.addEventListener('submit', e => {
     // prevent default action
     e.preventDefault();
-
-    const city = cityForm.city.value.trim();
+    
+    localStorage.setItem('City', cityForm.city.value.trim());
+    let city = localStorage.City;
+    
     cityForm.reset();
     updateCity(city).then(data =>{
         console.log(data);
