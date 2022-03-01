@@ -38,7 +38,11 @@ const items = [
         {text: 'something', Name: 'Jeff'},
         {text: 'something', Name: 'Jeff'},
 ]        
-
+//stringifying array
 localStorage.setItem('items', JSON.stringify(items));
 
 console.log(localStorage.items);
+
+//retrieving striniged array
+const StoredItems = JSON.parse(localStorage.items);
+console.log(StoredItems);
