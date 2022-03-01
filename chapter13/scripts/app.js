@@ -56,3 +56,13 @@ cityForm.addEventListener('submit', e => {
   });
 
   ///8:21PM
+
+  if(localStorage.City){
+    updateCity(localStorage.City)
+    .then(data =>{
+        updateUI(data);
+    }).catch(err => {
+        console.log("an error has occure", err);
+    });
+  }
+
