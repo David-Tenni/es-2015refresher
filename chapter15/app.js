@@ -37,7 +37,7 @@ const test = () => {
 userFunction = () => {
     const newUser = new User('jeff', "jeff@jmail.com");
     console.log(newUser);
-    
+    newUser.login();
 
 
     
@@ -47,6 +47,13 @@ class User{
     constructor(name, email){
         this.username = name;
         this.email = email;
+    }
+    login(){
+        console.log(`${this.username} logged in`);
+    }
+    logout(){
+        console.log(`${this.username} logged out`);
+
     }
 }
 main();
