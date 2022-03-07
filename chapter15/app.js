@@ -38,6 +38,9 @@ userFunction = () => {
     const newUser = new User('jeff', "jeff@jmail.com");
     console.log(newUser);
     newUser.login();
+    newUser.incScore();
+    newUser.incScore();
+    
 
 
     
@@ -47,13 +50,20 @@ class User{
     constructor(name, email){
         this.username = name;
         this.email = email;
+        this.score = 0;
     }
     login(){
         console.log(`${this.username} logged in`);
+        return this;
     }
     logout(){
         console.log(`${this.username} logged out`);
-
+        return this;
+    }
+    incScore(){
+        this.score++;
+        console.log(`${this.username}'s score is now: ${this.score}`)
+        return this;
     }
 }
 main();
