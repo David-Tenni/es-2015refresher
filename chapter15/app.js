@@ -1,6 +1,6 @@
 class User{
-    constructor(name, email){
-        this.username = name;
+    constructor(username, email){
+        this.username = username;
         this.email = email;
         this.score = 0;
     }
@@ -21,9 +21,10 @@ class User{
 
 
 class Admin extends User{
-    /*constructor(permission){
+    constructor(username, email, permission){
+        super(username, email);
         this.permission = permission;
-    }*/
+    }
 
     deleteUser(userToDelete){
         userArray = userArray.filter(user => user.username !== userToDelete.username)
@@ -39,7 +40,7 @@ class Admin extends User{
 
 const newUser1 = new User('jeff', "jeff@jmail.com");
 const newUser2 = new User('bob', "bob@qmail.com");
-const mainAdmin = new Admin('Jason', "jason@jmail.com", /*"Full"*/);
+const mainAdmin = new Admin('Jason', "jason@jmail.com", "Full");
 
 newUser1.login();
 newUser1.incScore();
@@ -50,6 +51,7 @@ console.log(userArray)
 
 mainAdmin.deleteUser(newUser2);
 console.log(userArray);
+console.log(mainAdmin);
 
 
 
