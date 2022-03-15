@@ -18,7 +18,7 @@ class User{
         return this;
     }
 }
-
+User.prototype.exit = function(){console.log(`${this.username} tried to escape`)};
 
 class Admin extends User{
     constructor(username, email, permission){
