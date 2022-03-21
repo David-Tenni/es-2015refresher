@@ -28,12 +28,7 @@ const updateUI = data =>{
 };
 
 
-const updateCity = async (userCity) => {
-    const cityDetails = await getCity(userCity);
-    const weather = await getWeather(cityDetails.Key);
-    console.log(cityDetails)
-    return { cityDetails, weather };
-};
+
 
 
 cityForm.addEventListener('submit', e => {

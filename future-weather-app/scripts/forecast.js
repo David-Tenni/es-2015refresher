@@ -1,37 +1,32 @@
-
-var x = key;
-const getCity = async city => {
-    const CitySearchEndpoint = "http://dataservice.accuweather.com/locations/v1/cities/search";
-    let query ='';
-    
-    query = `${CitySearchEndpoint}?apikey=${key}&q=${city}`
-    const response = await fetch(query, {mode: "cors"});
-    const data = await response.json();
-    return data[0];
-};
-
-const getWeather = async cityKey =>{
-    const CurrentConditionEndpoint ="http://dataservice.accuweather.com/currentconditions/v1/"
-    let query ='';
-    query = `${CurrentConditionEndpoint}${cityKey}?apikey=${key}`
-    
-    console.log(query);
-    console.log(cityKey);
-    const response = await fetch(query, {mode: "cors"});
-    const data = await response.json();
-    return data[0];
-};
+class Forecast{
+    constructor() {
+        this.key = key;
+        this.CitySearchEndpoint = "http://dataservice.accuweather.com/locations/v1/cities/search";
+        this.CurrentConditionEndpoint ="http://dataservice.accuweather.com/currentconditions/v1/";
+    }
 
 
+    async getCity(city){
+        let query = `${CitySearchEndpoint}?apikey=${key}&q=${city}`
 
-//console.log(getWeather(26216));
-
-// console.log(getCity('melbourne')
-// .then(data => {
-//     return getWeather(data.Key);
-// }).then(weatherData => {
-//     console.log(weatherData);
-// }).catch(error => console.log(error))
-// );
+        const response = await fetch(query, {mode: "cors"});
+        const data = await response.json();
+        return data[0];
+    }
 
 
+    async getWeather(cityKey){
+        let query = `${CurrentConditionEndpoint}${cityKey}?apikey=${key}`
+        
+        const response = await fetch(query, {mode: "cors"});
+        const data = await response.json();
+        return data[0];
+    }
+
+    async updateCity(){
+        const cityDetails = await this.getCity(userCity);
+        const weather = await this.getWeather(cityDetails.Key);
+
+        return { cityDetails, weather };
+    }
+}
