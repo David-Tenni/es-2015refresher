@@ -7,7 +7,7 @@ class Forecast{
 
 
     async getCity(city){
-        let query = `${CitySearchEndpoint}?apikey=${key}&q=${city}`
+        let query = `${this.CitySearchEndpoint}?apikey=${key}&q=${city}`
 
         const response = await fetch(query, {mode: "cors"});
         const data = await response.json();
@@ -16,14 +16,14 @@ class Forecast{
 
 
     async getWeather(cityKey){
-        let query = `${CurrentConditionEndpoint}${cityKey}?apikey=${key}`
+        let query = `${this.CurrentConditionEndpoint}${cityKey}?apikey=${key}`
         
         const response = await fetch(query, {mode: "cors"});
         const data = await response.json();
         return data[0];
     }
 
-    async updateCity(){
+    async updateCity(userCity){
         const cityDetails = await this.getCity(userCity);
         const weather = await this.getWeather(cityDetails.Key);
 

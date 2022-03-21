@@ -3,6 +3,10 @@ const detailsCard = document.getElementById('details-card');
 const details = document.getElementById('details');
 const timeImage = document.getElementById('time-image');
 const weatherIcon =document.getElementById('weather-icon');
+const forecast = new Forecast();
+
+
+console.log(forecast);
 
 const updateUI = data =>{
     const {cityDetails, weather} = data;
@@ -24,7 +28,6 @@ const updateUI = data =>{
             <span>&deg;C</span>
         </div>
     `;
-    console.log(details);
 };
 
 
@@ -39,7 +42,7 @@ cityForm.addEventListener('submit', e => {
     let city = localStorage.City;
     
     cityForm.reset();
-    updateCity(city).then(data =>{
+    forecast.updateCity(city).then(data =>{
         console.log(data);
         updateUI(data);
     }).catch(err => {
@@ -51,7 +54,7 @@ cityForm.addEventListener('submit', e => {
   ///8:21PM
 
   if(localStorage.City){
-    updateCity(localStorage.City)
+    forecast.updateCity(localStorage.City)
     .then(data =>{
         updateUI(data);
     }).catch(err => {
